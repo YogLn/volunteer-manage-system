@@ -18,14 +18,14 @@
         </div>
         <!-- 用户头像 -->
         <div class="user-avator">
-          <img src="../assets/img/img.jpg" />
+          <img :src="userInfo.avatar_url" />
         </div>
         <!-- 用户名下拉菜单 -->
         <el-dropdown class="user-name"
                      trigger="click"
                      @command="handleCommand">
           <span class="el-dropdown-link">
-            {{username}}
+            {{userInfo.name}}
             <i class="el-icon-caret-bottom"></i>
           </span>
           <template #dropdown>
@@ -42,14 +42,17 @@
 </template>
 <script>
 import { computed, onMounted } from "vue";
-import { useStore } from "vuex";
+import { useStore } from "@/store";
 import { useRouter } from "vue-router";
 import screenfull from 'screenfull'
+import LocalCache from '@/utils/cache';
 export default {
   setup() {
-    const username = localStorage.getItem("ms_username");
-
+    const router = useRouter();
     const store = useStore();
+
+    const userInfo = computed(() => store.state.login.userInfo)
+
     const collapse = computed(() => store.state.collapse);
     // 侧边栏折叠
     const collapseChage = () => {
@@ -63,26 +66,23 @@ export default {
     });
 
     // 用户名下拉菜单选择事件
-    const router = useRouter();
     const handleCommand = (command) => {
       if (command == "loginout") {
-        localStorage.removeItem("ms_username");
+        LocalCache.clear()
         router.push("/login");
       } else if (command == "user") {
-        router.push("/user");
       }
     };
 
     const hadleScreenClick = () => {
-      console.log('全屏')
       if (screenfull.isEnabled) {
         screenfull.toggle()
       }
     }
 
     return {
-      username,
       collapse,
+      userInfo,
       collapseChage,
       handleCommand,
       hadleScreenClick

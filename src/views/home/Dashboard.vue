@@ -4,19 +4,19 @@
       <el-col :span="8">
         <el-card shadow="hover" class="mgb20" style="height:252px;">
           <div class="user-info">
-            <img src="../../assets/img/img.jpg" class="user-avator" alt />
+            <img :src="userInfo.avatar_url" class="user-avator" alt />
             <div class="user-info-cont">
-              <div class="user-info-name">{{ name }}</div>
-              <div>{{ role }}</div>
+              <div class="user-info-name">{{ userInfo.name }}</div>
+              <div>超级管理员</div>
             </div>
           </div>
           <div class="user-info-list">
             上次登录时间：
-            <span>2019-11-01</span>
+            <span>2021-11-01</span>
           </div>
           <div class="user-info-list">
             上次登录地点：
-            <span>东莞</span>
+            <span>成都</span>
           </div>
         </el-card>
       </el-col>
@@ -25,16 +25,15 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { computed } from 'vue'
+import { useStore } from "@/store";
 export default {
   name: 'dashboard',
   setup() {
-    const name = localStorage.getItem('ms_username')
-    const role = name === 'admin' ? '超级管理员' : '普通用户'
-
+    const store = useStore()
+    const userInfo = computed(() => store.state.login.userInfo)
     return {
-      name,
-      role,
+      userInfo
     }
   },
 }
@@ -60,6 +59,10 @@ export default {
   flex: 1;
   font-size: 14px;
   color: #999;
+}
+
+.user-info-cont .user-info-name {
+  margin-bottom: 8px;
 }
 
 .user-info-cont div:first-child {

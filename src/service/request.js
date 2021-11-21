@@ -1,14 +1,15 @@
 import axios from 'axios';
+import LocalCache from '@/utils/cache'
 
 const service = axios.create({
-    // process.env.NODE_ENV === 'development' 来判断是否开发环境
-    // easy-mock服务挂了，暂时不使用了
-    // baseURL: 'https://www.easy-mock.com/mock/592501a391470c0ac1fab128',
+    // baseURL: 'http://localhost:5000',
+    baseURL: 'http://118.31.113.37:8005',
     timeout: 5000
 });
 
 service.interceptors.request.use(
     config => {
+        config.headers.authorization = LocalCache.getCache('token')
         return config;
     },
     error => {

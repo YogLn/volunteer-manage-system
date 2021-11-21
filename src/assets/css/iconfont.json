@@ -1,0 +1,51 @@
+{
+  "id": "2954238",
+  "name": "blog-back-end",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "25874245",
+      "name": "主页",
+      "font_class": "zhuye-copy",
+      "unicode": "e8bb",
+      "unicode_decimal": 59579
+    },
+    {
+      "icon_id": "4676490",
+      "name": "用户管理",
+      "font_class": "yonghuguanli",
+      "unicode": "e70c",
+      "unicode_decimal": 59148
+    },
+    {
+      "icon_id": "7542718",
+      "name": "24gl-tags",
+      "font_class": "24gl-tags",
+      "unicode": "e87c",
+      "unicode_decimal": 59516
+    },
+    {
+      "icon_id": "8300836",
+      "name": "留言",
+      "font_class": "liuyan",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "11372711",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e8ba",
+      "unicode_decimal": 59578
+    },
+    {
+      "icon_id": "13872294",
+      "name": "文章管理",
+      "font_class": "wenzhangguanli",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    }
+  ]
+}
