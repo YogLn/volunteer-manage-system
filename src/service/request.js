@@ -2,8 +2,7 @@ import axios from 'axios';
 import LocalCache from '@/utils/cache'
 
 const service = axios.create({
-    // baseURL: 'http://localhost:5000',
-    baseURL: 'http://118.31.113.37:8005',
+    baseURL: 'http://localhost:5000',
     timeout: 5000
 });
 
