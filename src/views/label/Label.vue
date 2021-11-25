@@ -1,12 +1,16 @@
 <template>
   <div>
     <div class="add-label">
-      <el-row>
-        <el-col :span="8">
+      <el-row :gutter="15">
+        <el-col :span="5">
           <el-input v-model="name"
-                    placeholder="添加标签"></el-input>
+                    placeholder="标签名称"></el-input>
         </el-col>
-        <el-col :span="8">
+        <el-col :span="5">
+          <el-input v-model="color"
+                    placeholder="标签颜色"></el-input>
+        </el-col>
+        <el-col :span="5">
           <el-button type="primary"
                      @click="addLabelAction">添加标签</el-button>
         </el-col>
@@ -35,6 +39,7 @@ export default {
   setup(props) {
     const labelList = ref([])
     const name = ref('')
+    const color = ref('')
     const getLabelListAction = async () => {
       const res = await getLabelList()
       labelList.value = res
@@ -47,7 +52,7 @@ export default {
     }
 
     const addLabelAction = async () => {
-      await addLabel({ name: name.value })
+      await addLabel({ name: name.value, color: color.value})
       getLabelListAction()
     }
 
@@ -56,6 +61,7 @@ export default {
       contentTableConfig,
       deleLabel,
       name,
+      color,
       addLabelAction
     }
   }
