@@ -29,6 +29,7 @@
 
 <script>
 import { ref } from 'vue';
+import { ElMessage } from 'element-plus';
 import { contentTableConfig } from './config/label.config';
 import { getLabelList, deleLabelById, addLabel } from '@/service/label';
 import MyTable from '@/components/MyTable.vue';
@@ -53,6 +54,10 @@ export default {
 
     const addLabelAction = async () => {
       await addLabel({ name: name.value, color: color.value})
+      ElMessage({
+        message: '创建成功~',
+        type: 'success',
+      })
       getLabelListAction()
     }
 

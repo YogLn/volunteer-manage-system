@@ -18,8 +18,8 @@
                size="medium">发表图片</el-button>
     <my-table :listData="tableList"
               :="contentTableConfig"
-							:listCount="total"
-							v-model:page="pageInfo">
+              :listCount="total"
+              v-model:page="pageInfo">
       <template #showImg="scope">
         <template v-if="scope.row.imgUrl">
           <img :src="scope.row.imgUrl"
@@ -42,7 +42,8 @@
 </template>
 
 <script>
-import { reactive, ref, watch  } from 'vue';
+import { reactive, ref, watch } from 'vue';
+import { ElMessage } from 'element-plus';
 import { addPhoto, getPhotoList, deletePhoto } from '@/service/photo';
 import MyTable from '@/components/MyTable.vue';
 import { contentTableConfig } from './config/photo.config';
@@ -60,15 +61,22 @@ export default {
 
     const cerate = async () => {
       await addPhoto(photo)
+      photo.imgUrl = ''
+      photo.desc = ''
+      ElMessage({
+        message: '发布成功~',
+        type: 'success',
+      })
+      getPhotoListAction(0, 10)
     }
 
     const getPhotoListAction = async (offset = 0, size = 10) => {
       const res = await getPhotoList(offset, size)
       tableList.value = res
-			total.value = res[0].total
+      total.value = res[0].total
     }
     getPhotoListAction()
-		 const pageInfo = ref({
+    const pageInfo = ref({
       currentPage: 1, pageSize: 10
     })
 
@@ -89,8 +97,8 @@ export default {
       contentTableConfig,
       tableList,
       deleteImg,
-			total,
-			pageInfo
+      total,
+      pageInfo
     }
   }
 }
