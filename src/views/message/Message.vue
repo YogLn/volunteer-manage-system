@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <el-card>
     <my-table :listData="messageList"
               :="contentTableConfig"
               :listCount="total"
@@ -12,18 +12,19 @@
           <img :src="scope.row.user.avatar"
                alt="">
         </template>
-				<template v-else>无</template>
+        <template v-else>无</template>
       </template>
       <template #username="scope">
         {{scope.row.user.username}}
       </template>
       <template #handler="scope">
-        <el-button type="danger"
+        <el-button icon="el-icon-delete"
                    size="mini"
-                   @click="deleteMessage(scope.row.id)">删除</el-button>
+                   type="danger"
+                   @click="deleteMessage(scope.row.id)"></el-button>
       </template>
     </my-table>
-  </div>
+  </el-card>
 </template>
 
 <script>
@@ -72,7 +73,8 @@ export default {
 
 <style lang="less" scoped>
 img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 </style>

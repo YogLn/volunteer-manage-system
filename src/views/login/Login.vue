@@ -48,8 +48,8 @@ export default {
     const store = useStore();
     store.commit("clearTags");
     const param = reactive({
-      name: "yogln",
-      password: "53406@Abc",
+      name: "",
+      password: "",
     });
 
     const rules = {

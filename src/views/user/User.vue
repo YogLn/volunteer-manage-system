@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <el-card>
     <my-table :listData="userList"
               :listCount="total"
               :="contentTableConfig"
@@ -23,12 +23,11 @@
                      size="mini"
                      type="danger"
                      @click="handleDeleteClick(scope.row)">
-            删除
           </el-button>
         </div>
       </template>
     </my-table>
-  </div>
+  </el-card>
 </template>
 
 <script>
@@ -80,5 +79,6 @@ export default {
 img {
   width: 100px;
   height: 100px;
+  border-radius: 50%;
 }
 </style>

@@ -112,6 +112,24 @@ const routes = [
         },
         component: () =>
           import(/* webpackChunkName: "home" */ '../views/label/Label.vue')
+      },
+      {
+        path: '/archive',
+        name: 'archive',
+        meta: {
+          title: '归档管理'
+        },
+        component: () =>
+          import(/* webpackChunkName: "home" */ '../views/archive/Archive.vue')
+      },
+      {
+        path: '/music',
+        name: 'music',
+        meta: {
+          title: '音乐管理'
+        },
+        component: () =>
+          import(/* webpackChunkName: "home" */ '../views/music/Music.vue')
       }
     ]
   }

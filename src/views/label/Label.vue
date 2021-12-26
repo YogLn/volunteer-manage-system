@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <el-card>
     <div class="add-label">
       <el-row :gutter="15">
         <el-col :span="5">
@@ -10,6 +10,9 @@
           <el-input v-model="color"
                     placeholder="标签颜色"></el-input>
         </el-col>
+        <el-col :span="3">
+          <el-color-picker v-model="color" />
+        </el-col>
         <el-col :span="5">
           <el-button type="primary"
                      @click="addLabelAction">添加标签</el-button>
@@ -18,13 +21,18 @@
     </div>
     <my-table :listData="labelList"
               :="contentTableConfig">
+      <template #handleColor="scoped">
+        <el-color-picker v-model="scoped.row.color"
+                         size="medium" />
+      </template>
       <template #handler="scope">
         <el-button type="danger"
+                   icon="el-icon-delete"
                    size="mini"
-                   @click="deleLabel(scope.row.labelId)">删除</el-button>
+                   @click="deleLabel(scope.row.labelId)"></el-button>
       </template>
     </my-table>
-  </div>
+  </el-card>
 </template>
 
 <script>
@@ -53,11 +61,14 @@ export default {
     }
 
     const addLabelAction = async () => {
-      await addLabel({ name: name.value, color: color.value})
+      if(!name.value || !color.value) return
+      await addLabel({ name: name.value, color: color.value })
       ElMessage({
         message: '创建成功~',
         type: 'success',
       })
+      name.value = ''
+      color.value = ''
       getLabelListAction()
     }
 

@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <el-card>
     <my-form btnName="发布"
              ref="formRef"
              @publishArticle="handlePublishArticle"></my-form>
-  </div>
+  </el-card>
 </template>
 
 <script>

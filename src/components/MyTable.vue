@@ -22,7 +22,7 @@
          <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :page-sizes="[1, 2, 30]"
+          :page-sizes="[10, 20, 30]"
           :current-page="page.currentPage"
           :page-size="page.pageSize"
           layout="total, sizes, prev, pager, next, jumper"

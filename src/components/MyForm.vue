@@ -6,7 +6,8 @@
         <el-input v-model="article.title"></el-input>
       </el-form-item>
       <el-form-item label="标题图片">
-        <el-input v-model="article.titleImg"></el-input>
+        <!-- <el-input v-model="article.titleImg"></el-input> -->
+        <upload-img @imgUrl="handleImgUrl" :image="article.titleImg"></upload-img>
       </el-form-item>
       <el-form-item label="文章描述">
         <el-input v-model="article.description"></el-input>
@@ -18,7 +19,7 @@
 
     <!-- 多选框 -->
     <div class="checkbox">
-      <h3>给文章添加标签</h3>
+      <h3>添加标签</h3>
       <el-checkbox-group v-model="checkboxGroup">
         <template v-for="lable in labels"
                   :key="lable.labelName">
@@ -38,7 +39,9 @@
 import { ref } from 'vue';
 import { getLabelList } from '@/service/label';
 import { getArticleDetail } from '@/service/article';
+import UploadImg from './UploadImg.vue';
 export default {
+  components: { UploadImg },
   props: {
     btnName: {
       type: String,
@@ -81,6 +84,10 @@ export default {
       description: '',
     })
 
+    const handleImgUrl = (imgUrl) => {
+      article.value.titleImg = imgUrl
+    }
+
     const submit = async () => {
       article.value.content = text.value
       if (props.btnName === '修改') {
@@ -95,7 +102,8 @@ export default {
       submit,
       article,
       labels,
-      checkboxGroup
+      checkboxGroup,
+      handleImgUrl
     }
   }
 }
@@ -105,11 +113,12 @@ export default {
 .article {
   padding: 0 30px;
   .checkbox {
-    display: flex;
     margin: 20px 0;
-    align-items: center;
     h3 {
       margin-right: 30px;
+    }
+    .el-checkbox  {
+      margin-top: 10px;
     }
   }
 }

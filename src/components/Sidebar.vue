@@ -91,6 +91,16 @@ export default {
         icon: "iconfont icon-24gl-tags",
         index: "/label",
         title: " 标签管理",
+      },
+      {
+        icon: "iconfont icon-guidangxiangmu",
+        index: "/archive",
+        title: " 归档管理",
+      },
+      {
+        icon: "iconfont icon-musiclist",
+        index: "/music",
+        title: " 音乐管理",
       }
     ];
 

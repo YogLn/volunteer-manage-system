@@ -24,3 +24,11 @@ export function deletePhoto(id) {
 		method: 'DELETE'
 	})
 }
+
+export function editPhotoDetails(id, data) {
+	return request({
+		url: `/photo/${id}`,
+		method: 'PATCH',
+		data
+	})
+}

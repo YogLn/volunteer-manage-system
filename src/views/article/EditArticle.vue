@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <el-card>
     <my-form btnName="修改"
              @editArticle="handleEditArticle"
              :articleId="id" />
-  </div>
+  </el-card>
 </template>
 
 <script>
@@ -22,7 +22,7 @@ export default {
     const id = ref()
     id.value = route.params.id
     const handleEditArticle = async (payload) => {
-      const res = await updateArticle(id.value, payload[0])
+      await updateArticle(id.value, payload[0])
       // 给文章添加标签
       await updateArticleLabel(id.value, payload[1])
       ElMessage.success('修改成功')

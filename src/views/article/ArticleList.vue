@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <el-card>
     <my-table :listData="articleList"
               :listCount="total"
               :=tableContentConfig
@@ -17,7 +17,7 @@
       <template #labels="scope">
         <template v-for="label in scope.row.labels"
                   :key="label.id">
-          <el-tag type="success">{{label.name}}</el-tag>
+          <el-tag type="success" :color="label.color">{{label.name}}</el-tag>
         </template>
       </template>
 
@@ -44,7 +44,7 @@
         </el-button>
       </template>
     </my-table>
-  </div>
+  </el-card>
 </template>
 
 <script>
@@ -116,6 +116,7 @@ export default {
 }
 img {
   width: 150px;
-  height: 150px;
+  height: 100px;
+  object-fit: cover;
 }
 </style>
