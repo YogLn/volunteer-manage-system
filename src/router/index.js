@@ -141,7 +141,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const token = window.localStorage.getItem('token')
+  const token = window.sessionStorage.getItem('token')
   if (to.name !== 'Login' && !token) {
     next({ name: 'Login' })
   } else next()

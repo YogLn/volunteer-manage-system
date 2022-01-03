@@ -19,6 +19,14 @@
             <span>成都</span>
           </div>
         </el-card>
+       
+      </el-col>
+      <el-col :span="8">
+       <el-card shadow="hover" class="mgb20" style="height:252px;">
+          <div class="">
+            文章总数11
+          </div>
+        </el-card>
       </el-col>
     </el-row>
   </div>
