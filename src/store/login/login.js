@@ -1,4 +1,4 @@
-import { login, getUserInfo } from '@/service/login'
+// import { login, getUserInfo } from '@/service/login'
 import router from '@/router'
 
 import LocalCache from '@/utils/cache'
@@ -27,14 +27,14 @@ const loginModel = {
   actions: {
     async loginAction({ commit }, payload) {
       // 登录逻辑
-      const loginResult = await login(payload)
-      commit('changeToken', loginResult.token)
-      LocalCache.setCache('token', loginResult.token)
+      // const loginResult = await login(payload)
+      // commit('changeToken', loginResult.token)
+      // LocalCache.setCache('token', loginResult.token)
 
       // 获取头像
-      const userInfo = await getUserInfo(loginResult.id)
-      commit('changeUserInfo', userInfo[0])
-      LocalCache.setCache('userInfo', userInfo[0])
+      // const userInfo = await getUserInfo(loginResult.id)
+      // commit('changeUserInfo', userInfo[0])
+      // LocalCache.setCache('userInfo', userInfo[0])
       router.push('/main')
     },
 

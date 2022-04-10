@@ -5,7 +5,6 @@
     <div class="ms-login">
       <div class="ms-title">博客管理系统</div>
       <el-form :model="param"
-               :rules="rules"
                ref="login"
                label-width="0px"
                class="ms-content">

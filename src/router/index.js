@@ -30,107 +30,6 @@ const routes = [
             /* webpackChunkName: "dashboard" */ '../views/home/Dashboard.vue'
           )
       },
-      {
-        path: '/articleList',
-        name: 'articleList',
-        meta: {
-          title: '文章列表'
-        },
-        component: () =>
-          import(
-            /* webpackChunkName: "article" */ '../views/article/ArticleList.vue'
-          )
-      },
-      {
-        path: '/article/:id',
-        name: 'article',
-        meta: {
-          title: '修改文章'
-        },
-        component: () =>
-          import(
-            /* webpackChunkName: "article" */ '../views/article/EditArticle.vue'
-          )
-      },
-      {
-        path: '/newArticle',
-        name: 'newArticle',
-        meta: {
-          title: '发布文章'
-        },
-        component: () =>
-          import(
-            /* webpackChunkName: "article" */ '../views/article/NewArticle.vue'
-          )
-      },
-      {
-        path: '/comment/:id',
-        name: 'comment',
-        meta: {
-          title: '评论管理'
-        },
-        component: () =>
-          import(
-            /* webpackChunkName: "comment" */ '../views/article/Comment.vue'
-          )
-      },
-      {
-        path: '/message',
-        name: 'message',
-        meta: {
-          title: '留言管理',
-          permission: true
-        },
-        component: () =>
-          import(
-            /* webpackChunkName: "message" */ '../views/message/Message.vue'
-          )
-      },
-      {
-        path: '/photo',
-        name: 'photo',
-        meta: {
-          title: '图片管理'
-        },
-        component: () =>
-          import(/* webpackChunkName: "photo" */ '../views/photo/Photo.vue')
-      },
-      {
-        path: '/users',
-        name: 'users',
-        meta: {
-          title: '用户管理'
-        },
-        component: () =>
-          import(/* webpackChunkName: "home" */ '../views/user/User.vue')
-      },
-      {
-        path: '/label',
-        name: 'label',
-        meta: {
-          title: '标签管理'
-        },
-        component: () =>
-          import(/* webpackChunkName: "home" */ '../views/label/Label.vue')
-      },
-      {
-        path: '/archive',
-        name: 'archive',
-        meta: {
-          title: '归档管理'
-        },
-        component: () =>
-          import(/* webpackChunkName: "home" */ '../views/archive/Archive.vue')
-      },
-      {
-        path: '/music',
-        name: 'music',
-        meta: {
-          title: '音乐管理'
-        },
-        component: () =>
-          import(/* webpackChunkName: "home" */ '../views/music/Music.vue')
-      }
     ]
   }
 ]
@@ -140,11 +39,11 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  const token = window.sessionStorage.getItem('token')
-  if (to.name !== 'Login' && !token) {
-    next({ name: 'Login' })
-  } else next()
-})
+// router.beforeEach((to, from, next) => {
+//   const token = window.sessionStorage.getItem('token')
+//   if (to.name !== 'Login' && !token) {
+//     next({ name: 'Login' })
+//   } else next()
+// })
 
 export default router

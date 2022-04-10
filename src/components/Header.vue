@@ -50,9 +50,7 @@ export default {
   setup() {
     const router = useRouter();
     const store = useStore();
-
     const userInfo = computed(() => store.state.login.userInfo)
-
     const collapse = computed(() => store.state.collapse);
     // 侧边栏折叠
     const collapseChage = () => {
@@ -97,6 +95,7 @@ export default {
   width: 100%;
   height: 70px;
   font-size: 22px;
+  background-color: #242F42;
   color: #fff;
 }
 .collapse-btn {

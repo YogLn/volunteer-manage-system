@@ -56,51 +56,6 @@ export default {
         icon: "iconfont icon-zhuye-copy",
         index: "/main",
         title: " 系统首页",
-      },
-      {
-        icon: "iconfont icon-wenzhangguanli",
-        index: "2",
-        title: " 文章管理",
-        subs: [
-          {
-            index: '/articleList',
-            title: ' 文章列表'
-          },
-          {
-            index: '/newArticle',
-            title: ' 发布文章'
-          }
-        ]
-      },
-      {
-        icon: "iconfont icon-liuyan",
-        index: "/message",
-        title: " 留言管理",
-      },
-      {
-        icon: "iconfont icon-tupian",
-        index: "/photo",
-        title: " 图片管理",
-      },
-      {
-        icon: "iconfont icon-yonghuguanli",
-        index: "/users",
-        title: " 用户管理",
-      },
-      {
-        icon: "iconfont icon-24gl-tags",
-        index: "/label",
-        title: " 标签管理",
-      },
-      {
-        icon: "iconfont icon-guidangxiangmu",
-        index: "/archive",
-        title: " 归档管理",
-      },
-      {
-        icon: "iconfont icon-musiclist",
-        index: "/music",
-        title: " 音乐管理",
       }
     ];
 
