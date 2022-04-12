@@ -7,6 +7,12 @@
 			<template #serveType="scope">
 				{{ scope.row.serveType.join(', ') }}
 			</template>
+			<template #user="scope">
+				{{ scope.row.userVo.username }}
+			</template>
+			<template #school="scope">
+				{{ scope.row.userVo.school }}
+			</template>
 			<template #handler="scope">
 				<el-popconfirm title="确认删除吗?" @confirm="handleDeleteClick(scope.row)">
 					<template #reference>
