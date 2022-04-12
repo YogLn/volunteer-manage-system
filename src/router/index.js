@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     meta: {
       title: '登录'
     },
@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: () => import('../views/Home.vue'),
     children: [
       {
@@ -30,6 +30,79 @@ const routes = [
             /* webpackChunkName: "dashboard" */ '../views/home/Dashboard.vue'
           )
       },
+      {
+        path: '/newArticle',
+        name: 'newArticle',
+        meta: {
+          title: '文章管理'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/article/newArticle.vue'
+          )
+      },
+      {
+        path: '/articleList',
+        name: 'articleList',
+        meta: {
+          title: '文章管理'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/article/articleList.vue'
+          )
+      },
+      {
+        path: '/article/:id',
+        name: 'detail',
+        meta: {
+          title: '修改文章'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/article/editArticle.vue'
+          )
+      },
+      {
+        path: '/activity',
+        name: 'activity',
+        meta: {
+          title: '活动管理'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/activity/activity.vue'
+          )
+      },
+      {
+        path: '/comment',
+        name: 'comment',
+        meta: {
+          title: '评论管理'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/comment/comment.vue'
+          )
+      },
+      {
+        path: '/team',
+        name: 'team',
+        meta: {
+          title: '团队管理'
+        },
+        component: () =>
+          import(/* webpackChunkName: "dashboard" */ '../views/team/team.vue')
+      },
+      {
+        path: '/user',
+        name: 'user',
+        meta: {
+          title: '用户管理'
+        },
+        component: () =>
+          import(/* webpackChunkName: "dashboard" */ '../views/user/user.vue')
+      }
     ]
   }
 ]
@@ -39,11 +112,11 @@ const router = createRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   const token = window.sessionStorage.getItem('token')
-//   if (to.name !== 'Login' && !token) {
-//     next({ name: 'Login' })
-//   } else next()
-// })
+router.beforeEach((to, from, next) => {
+  const token = JSON.parse(window.localStorage.getItem('token'))
+  if (to.name !== 'login' && !token) {
+    next({ name: 'login' })
+  } else next()
+})
 
 export default router

@@ -1,7 +1,7 @@
 <template>
-  <div>
-    Home
-  </div>
+	<div>
+		活动管理
+	</div>
 </template>
 
 <script setup>

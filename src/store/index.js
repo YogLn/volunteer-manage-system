@@ -1,7 +1,9 @@
 import { createStore, useStore as useVuexStore } from 'vuex'
-import login from './login/login'
+import login from './login'
+import article from './article'
+import team from './team'
 
-const store =  createStore({
+const store = createStore({
   state: {
     tagsList: [],
     collapse: false
@@ -40,11 +42,11 @@ const store =  createStore({
       state.collapse = data
     }
   },
-  actions: {
-    
-  },
+  actions: {},
   modules: {
-    login
+    login,
+    article,
+    team
   }
 })
 

@@ -1,125 +1,73 @@
 <template>
-  <div class="article">
-    <el-form :model="article"
-             label-width="120px">
-      <el-form-item label="文章标题">
-        <el-input v-model="article.title"></el-input>
-      </el-form-item>
-      <el-form-item label="标题图片">
-        <!-- <el-input v-model="article.titleImg"></el-input> -->
-        <upload-img @imgUrl="handleImgUrl" :image="article.titleImg"></upload-img>
-      </el-form-item>
-      <el-form-item label="文章描述">
-        <el-input v-model="article.description"></el-input>
-      </el-form-item>
-    </el-form>
-    <v-md-editor v-model="text"
-                 left-toolbar="undo redo | customToolbar1 customToolbar2 customToolbar3"
-                 height="500px" />
-
-    <!-- 多选框 -->
-    <div class="checkbox">
-      <h3>添加标签</h3>
-      <el-checkbox-group v-model="checkboxGroup">
-        <template v-for="lable in labels"
-                  :key="lable.labelName">
-          <el-checkbox :label="lable.labelName"
-                       border />
+  <div class="my-form">
+    <el-form :label-width="labelWidth">
+      <el-row>
+        <template v-for="item in formItems" :key="item.label">
+          <el-col v-bind="colLayout">
+            <el-form-item v-if="!item.isHidden" :label="item.label" :rules="item.rules" :style="itemStyle">
+              <template v-if="item.type === 'input' || item.type === 'password'">
+                <el-input :placeholder="item.placeholder" v-bind="item.otherOptions"
+                  :show-password="item.type === 'password'" :model-value="modelValue[`${item.field}`]"
+                  @update:modelValue="handleValueChange($event, item.field)" />
+              </template>
+              <template v-else-if="item.type === 'select'">
+                <el-select :placeholder="item.placeholder" v-bind="item.otherOptions" style="width: 100%"
+                  :model-value="modelValue[`${item.field}`]" @update:modelValue="handleValueChange($event, item.field)">
+                  <el-option v-for="option in item.options" :key="option.value" :label="option.title"
+                    :value="option.value">
+                  </el-option>
+                </el-select>
+              </template>
+              <template v-else-if="item.type === 'datepicker'">
+                <el-date-picker style="width: 100%" v-bind="item.otherOptions"
+                  :model-value="modelValue[`${item.field}`]" @update:modelValue="handleValueChange($event, item.field)">
+                </el-date-picker>
+              </template>
+            </el-form-item>
+          </el-col>
         </template>
-      </el-checkbox-group>
-    </div>
+      </el-row>
+    </el-form>
 
-    <!-- 发布 -->
-    <el-button type="primary"
-               @click="submit">{{btnName}}</el-button>
   </div>
 </template>
 
-<script>
-import { ref } from 'vue';
-import { getLabelList } from '@/service/label';
-import { getArticleDetail } from '@/service/article';
-import UploadImg from './UploadImg.vue';
-export default {
-  components: { UploadImg },
-  props: {
-    btnName: {
-      type: String,
-      required: true
-    },
-    articleId: {
-      type: String
-    }
+<script setup>
+import { defineProps, ref, toRefs } from 'vue'
+const { modelValue, formItems, labelWidth, itemStyle, colLayout } = defineProps({
+  modelValue: {
+    type: Object,
+    required: true
   },
-  emits: ['publishArticle', 'editArticle'],
-  setup(props, { emit }) {
-    const text = ref('')
-    const labels = ref([])
-    const checkboxGroup = ref([])
-    if (props.btnName === '修改') {
-      const getArticleDetailAction = async (id) => {
-        const res = await getArticleDetail(id)
-				article.value.title = res[0].title
-				article.value.titleImg = res[0].titleImg
-				article.value.description = res[0].description
-				text.value = res[0].content
-				let newLabels = []
-				if(res[0].labels) {
-					newLabels	= res[0].labels?.map(item => item.name)
-				}
-				checkboxGroup.value = newLabels
-      }
-      getArticleDetailAction(props.articleId)
-    }
-    // 获取标签列表
-    const getLabelListAction = async () => {
-      const res = await getLabelList()
-      labels.value = res
-    }
-    getLabelListAction()
-
-    const article = ref({
-      title: '',
-      titleImg: '',
-      description: '',
+  formItems: {
+    type: Array,
+    default: () => []
+  },
+  labelWidth: {
+    type: String,
+    default: '100px'
+  },
+  itemStyle: {
+    type: Object,
+    default: () => ({ padding: '10px 40px' })
+  },
+  colLayout: {
+    type: Object,
+    default: () => ({
+      xl: 6, // >1920px 4个
+      lg: 8,
+      md: 12,
+      sm: 24,
+      xs: 24
     })
-
-    const handleImgUrl = (imgUrl) => {
-      article.value.titleImg = imgUrl
-    }
-
-    const submit = async () => {
-      article.value.content = text.value
-      if (props.btnName === '修改') {
-        emit('editArticle', [article.value, { labels: [...checkboxGroup.value] }])
-      } else {
-        emit('publishArticle', [article.value, { labels: [...checkboxGroup.value] }])
-      }
-    }
-
-    return {
-      text,
-      submit,
-      article,
-      labels,
-      checkboxGroup,
-      handleImgUrl
-    }
   }
+})
+
+const handleValueChange = (value, field) => {
+  emit('update:modelValue', { ...props.modelValue, [field]: value })
 }
+
 </script>
 
-<style lang="less" scoped>
-.article {
-  padding: 0 30px;
-  .checkbox {
-    margin: 20px 0;
-    h3 {
-      margin-right: 30px;
-    }
-    .el-checkbox  {
-      margin-top: 10px;
-    }
-  }
-}
+<style lang="scss" scoped>
 </style>

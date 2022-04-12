@@ -150,7 +150,8 @@ export default {
 }
 
 .tags-li.active {
-    color: #fff;
+   color: #000;
+   background-color: #409EFF;
 }
 
 .tags-li-title {
@@ -164,7 +165,8 @@ export default {
 }
 
 .tags-li.active .tags-li-title {
-    color: #fff;
+    color: #000;
+
 }
 
 .tags-close-box {

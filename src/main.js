@@ -10,6 +10,5 @@ import { registerTime } from '@/utils/format'
 const app = createApp(App)
 installElementPlus(app)
 
-
 setupStore()
 app.use(store).use(router).use(registerTime).mount('#app')
