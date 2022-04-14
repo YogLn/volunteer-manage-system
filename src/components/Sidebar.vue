@@ -87,7 +87,7 @@ export default {
       },
       {
         icon: "iconfont icon-user",
-        index: "6",
+        index: "7",
         title: " 用户管理",
         subs: [
           {

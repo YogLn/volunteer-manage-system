@@ -1,6 +1,9 @@
 <template>
 	<div class="container">
 		<my-table :listData="activityList" :="tableContentConfig" :isShow="false">
+			<template #logo="scope">
+				<el-image :src="scope.row.logo"></el-image>
+			</template>
 			<template #status="scope">
 				<el-tag v-if="scope.row.status === 0" type="warning">审核中</el-tag>
 				<el-tag v-else-if="scope.row.status === 1" type="success">通过</el-tag>
@@ -8,10 +11,6 @@
 			</template>
 			<template #type="scope">
 				{{ scope.row.type.join('') }}
-			</template>
-			<template #logo="scope">
-				<img v-if="scope.row.logo" :src="scope.row.logo" alt="">
-				<span v-else>无</span>
 			</template>
 			<template #handler="scope">
 				<el-button icon="el-icon-edit" size="mini" type="primary" @click="handleEditClick(scope.row)">
