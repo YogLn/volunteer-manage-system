@@ -1,5 +1,13 @@
 import request from './request'
 
+export function registerActivityReq(data){
+  return request({
+    url:'/activity/register',
+    method:'POST',
+    data
+  })
+}
+
 export function getActivityListReq() {
   return request({
     url: '/activity/list',

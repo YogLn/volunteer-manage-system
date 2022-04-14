@@ -1,18 +1,18 @@
 export const tableContentConfig = {
   propList: [
     { prop: 'name', label: '活动名称', minWidth: '130' },
-    { prop: 'teamId', label: '团队id', minWidth: '150', slotName: 'username' },
-    { prop: 'status', label: '状态', minWidth: '150', slotName: 'status' },
+    { prop: 'teamId', label: '团队id', minWidth: '80', slotName: 'username' },
+    { prop: 'status', label: '状态', minWidth: '80', slotName: 'status' },
     {
       prop: 'type',
       label: '服务类型',
-      minWidth: '150',
+      minWidth: '80',
       slotName: 'type'
     },
     {
       prop: 'address',
       label: '服务地点',
-      minWidth: '150',
+      minWidth: '100',
       slotName: 'address'
     },
     {
@@ -48,15 +48,15 @@ export const tableContentConfig = {
     {
       prop: 'modifyDesc',
       label: '修改意见',
-      minWidth: '150',
+      minWidth: '100',
       slotName: 'modifyDesc'
     },
     {
       prop: 'length',
       label: '服务时长',
-      minWidth: '150',
+      minWidth: '100',
       slotName: 'length'
     },
-    { label: '操作', slotName: 'handler' }
+    { label: '操作', minWidth: '150',slotName: 'handler' }
   ]
 }

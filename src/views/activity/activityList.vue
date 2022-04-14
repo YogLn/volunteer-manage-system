@@ -1,9 +1,6 @@
 <template>
     <div class="container">
         <my-table :listData="activityList" :="tableContentConfig" :isShow="false">
-			<template #username="scope">
-				{{scope.row.userVo.username}}
-			</template>
 			<template #status="scope">
 				<el-tag v-if="scope.row.status === 0" type="warning">审核中</el-tag>
 				<el-tag v-else-if="scope.row.status === 1" type="success">通过</el-tag>
@@ -39,13 +36,13 @@ store.dispatch('activity/getActivityListAction');
 
 const activityList = computed(()=>store.state.activity.activityList)
 
-const handleEditClick = ({activityId}) => {
+const handleEditClick = ({id}) => {
 	
-	router.push(`/activity/${activityId}`)
+	router.push(`/activity/${id}`)
 }
 
-const handleDeleteClick = async ({ activityId }) => {
-	const res = await deleteActivityReq(activityId)
+const handleDeleteClick = async ({ id }) => {
+	const res = await deleteActivityReq(id)
 	if (res.code === 200) {
 		ElMessage.success('删除成功~')
 		store.dispatch('activity/getActivityListAction')

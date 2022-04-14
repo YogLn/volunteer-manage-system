@@ -76,6 +76,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+
 .footer {
   margin-top: 15px;
 

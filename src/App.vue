@@ -21,4 +21,5 @@ export default {
 
 <style>
 @import './assets/css/main.css';
+
 </style>

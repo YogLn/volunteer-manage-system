@@ -1,13 +1,13 @@
 <template>
     <div class="container">
-        <ActivityForm @editActivity="handleEditActivity" :activityId="activityId" />
+        <ActivityForm @editActivity="handleEditActivity" @sendActivity="handleSendActivity" :activityId="activityId" />
     </div>
 </template>
 
 <script setup>
 import { ElMessage } from 'element-plus';
 import { useRoute, useRouter } from 'vue-router';
-import { updateActivityReq } from '@/services/activity';
+import { updateActivityReq,registerActivityReq } from '@/services/activity';
 import ActivityForm from './cpns/activityForm.vue';
 
 const route = useRoute()
@@ -17,6 +17,14 @@ const handleEditActivity = async (activity) => {
 	const res = await updateActivityReq(activity)
 	if (res.code === 200) {
 		ElMessage.success('修改成功~')
+		router.push('/activityList')
+	}
+}
+
+const handleSendActivity = async (activity) =>{
+	const res = await registerActivityReq(activity)
+	if (res.code === 200) {
+		ElMessage.success('新增成功~')
 		router.push('/activityList')
 	}
 }

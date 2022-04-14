@@ -1,17 +1,8 @@
 <template>
 	<div class="container">
 		<my-table :listData="activityList" :="tableContentConfig" :isShow="false">
-			<template #serveArea="scope">
-				{{ scope.row.serveArea.join(' ') }}
-			</template>
-			<template #serveType="scope">
-				{{ scope.row.serveType.join(', ') }}
-			</template>
-			<template #user="scope">
-				{{ scope.row.userVo.username }}
-			</template>
-			<template #school="scope">
-				{{ scope.row.userVo.school }}
+			<template #type="scope">
+				{{ scope.row.type.join(', ') }}
 			</template>
 			<template #handler="scope">
 				<el-popconfirm title="确认删除吗?" @confirm="handleDeleteClick(scope.row)">
