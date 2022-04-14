@@ -1,6 +1,9 @@
 <template>
     <div class="container">
         <my-table :listData="teamList" :="tableContentConfig" :isShow="false">
+			<template #logo="scope">
+				<el-image :src="scope.row.logo"></el-image>
+			</template>
 			<template #username="scope">
 				{{scope.row.userVo.username}}
 			</template>

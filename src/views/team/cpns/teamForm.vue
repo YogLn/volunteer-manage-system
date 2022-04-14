@@ -7,6 +7,9 @@
 			<el-form-item label="团队名称" prop="teamName" disabled="true">
 				<el-input v-model="team.teamName"></el-input>
 			</el-form-item>
+			<el-form-item label="团队logo" prop="logo">
+				<el-image :src="team.logo"></el-image>
+			</el-form-item>
 			<el-form-item label="负责人" prop="account">
 				<el-input v-model="team.account"></el-input>
 			</el-form-item>
@@ -53,6 +56,7 @@ let team = reactive({
 	introduce: '',
 	status: 0,
 	communityCreatedate:'',
+	logo: '',
 	serveArea: [],
 	serveType: [],
 })
@@ -68,6 +72,7 @@ if (teamId) {
 		team.account = data.userVo.account
 		team.introduce = data.introduce
 		team.status = data.status
+		team.logo = data.logo
 		team.serveArea = data.serveArea
 		team.serveType = data.serveType
 	}
