@@ -4,6 +4,8 @@ import article from './article'
 import team from './team'
 import user from './user'
 import activity from './activity'
+import comment from './comment'
+import report from './report'
 
 const store = createStore({
   state: {
@@ -50,7 +52,9 @@ const store = createStore({
     article,
     team,
     user,
-    activity
+    activity,
+    comment,
+    report
   }
 })
 

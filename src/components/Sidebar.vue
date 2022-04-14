@@ -41,7 +41,7 @@ export default {
       {
         icon: "iconfont icon-home",
         index: "/main",
-        title: " 系统首页",
+        title: "举报管理",
       },
       {
         icon: "iconfont icon-article",
@@ -62,7 +62,7 @@ export default {
         icon: "iconfont icon-activity",
         index: "3",
         title: "活动管理",
-          subs: [
+        subs: [
           {
             index: "/activityList",
             title: "活动列表",
@@ -76,7 +76,7 @@ export default {
       },
       {
         icon: "iconfont icon-team",
-         index: "6",
+        index: "6",
         title: " 团队管理",
         subs: [
           {

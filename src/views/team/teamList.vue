@@ -1,16 +1,25 @@
 <template>
-    <div class="container">
-        <my-table :listData="teamList" :="tableContentConfig" :isShow="false">
+	<div class="container">
+		<my-table :listData="teamList" :="tableContentConfig" :isShow="false">
 			<template #username="scope">
-				{{scope.row.userVo.username}}
+				{{ scope.row.userVo.username }}
+			</template>
+			<template #serveArea="scope">
+				{{ scope.row.serveArea.join(' ') }}
+			</template>
+			<template #serveType="scope">
+				{{ scope.row.serveType.join(', ') }}
+			</template>
+			<template #logo="scope">
+				<img v-if="scope.row.logo" :src="scope.row.logo" alt="">
+				<span v-else>无</span>
 			</template>
 			<template #status="scope">
 				<el-tag v-if="scope.row.status === 0" type="warning">审核中</el-tag>
 				<el-tag v-else-if="scope.row.status === 1" type="success">通过</el-tag>
 				<el-tag v-else type="danger">不通过</el-tag>
-				
 			</template>
-            <template #handler="scope">
+			<template #handler="scope">
 				<el-button icon="el-icon-edit" size="mini" type="primary" @click="handleEditClick(scope.row)">
 				</el-button>
 				<el-popconfirm title="确认删除吗?" @confirm="handleDeleteClick(scope.row)">
@@ -20,8 +29,8 @@
 					</template>
 				</el-popconfirm>
 			</template>
-        </my-table>
-    </div>
+		</my-table>
+	</div>
 </template>
 
 <script setup>
@@ -31,16 +40,16 @@ import router from '@/router';
 import { ElMessage } from 'element-plus'
 import MyTable from '@/components/MyTable.vue';
 import { tableContentConfig } from './config/team.config';
-import {deleteTeamReq} from '@/services/team'
+import { deleteTeamReq } from '@/services/team'
 
 const store = useStore();
 
 store.dispatch('team/getTeamListAction');
 
-const teamList = computed(()=>store.state.team.teamList)
+const teamList = computed(() => store.state.team.teamList)
 
-const handleEditClick = ({teamId}) => {
-	
+const handleEditClick = ({ teamId }) => {
+
 	router.push(`/team/${teamId}`)
 }
 
@@ -55,5 +64,14 @@ const handleDeleteClick = async ({ teamId }) => {
 </script>
 
 <style lang="less" scoped>
+.container {
+	img {
+		width: 100px;
+		height: 100px;
+	}
 
+	.el-table {
+		overflow-x: scroll
+	}
+}
 </style>

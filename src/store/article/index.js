@@ -20,6 +20,7 @@ const articleModel = {
   actions: {
     async getArticleListAction({ commit }, payload) {
       const { data } = await getArticleListReq(payload)
+      console.log(data)
       if (payload === 1) {
         commit('changeArticleUserList', data)
       } else {

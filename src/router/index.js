@@ -23,7 +23,7 @@ const routes = [
         path: '/main',
         name: 'main',
         meta: {
-          title: '系统首页'
+          title: '举报管理'
         },
         component: () =>
           import(
@@ -34,7 +34,7 @@ const routes = [
         path: '/newArticle',
         name: 'newArticle',
         meta: {
-          title: '文章管理'
+          title: '发布文章'
         },
         component: () =>
           import(
@@ -78,7 +78,7 @@ const routes = [
         path: '/activityList',
         name: 'activityList',
         meta: {
-          title: '活动管理'
+          title: '活动列表'
         },
         component: () =>
           import(
@@ -168,7 +168,7 @@ const routes = [
           import(
             /* webpackChunkName: "dashboard" */ '../views/user/editUser.vue'
           )
-      },
+      }
     ]
   }
 ]
