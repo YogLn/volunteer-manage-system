@@ -1,7 +1,6 @@
 export const tableContentConfig = {
   propList: [
     { prop: 'teamName', label: '团队名称', minWidth: '130' },
-    { prop: 'logo', label: '团队logo', minWidth: '130', slotName: 'logo' },
     {
       prop: 'username',
       label: '负责人',
@@ -9,7 +8,7 @@ export const tableContentConfig = {
       slotName: 'username'
     },
     { prop: 'status', label: '状态', minWidth: '150', slotName: 'status' },
-    { prop: 'logo', label: '状态', minWidth: '150', slotName: 'logo' },
+    { prop: 'logo', label: '图片', minWidth: '150', slotName: 'logo' },
     {
       prop: 'serveArea',
       label: '服务地区',

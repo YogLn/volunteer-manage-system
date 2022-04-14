@@ -42,7 +42,6 @@ export default {
     const router = useRouter();
     const store = useStore();
     const userInfo = computed(() => store.state.login.userInfo)
-    console.log(store.state.login.userInfo)
     const collapse = computed(() => store.state.collapse);
     // 侧边栏折叠
     const collapseChage = () => {

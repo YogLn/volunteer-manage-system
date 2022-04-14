@@ -7,10 +7,6 @@
 			<el-form-item label="活动名称" prop="name" disabled>
 				<el-input v-model="activity.name"></el-input>
 			</el-form-item>
-			<el-form-item label="活动logo" prop="logo" disabled>
-				<el-image :src="activity.logo">
-				</el-image>
-			</el-form-item>
 			<el-form-item label="活动时长" prop="length" disabled="true">
 				<el-input v-model="activity.length"></el-input>
 			</el-form-item>
@@ -78,7 +74,7 @@ let activity = reactive({
 	startDatetime: '',
 	endDatetime: '',
 	recruitNumber: 0,
-	createDate:'',
+	createDate: '',
 	modifyDesc: '',
 	logo: '',
 	length: 0,
@@ -90,7 +86,6 @@ let activity = reactive({
 if (activityId) {
 	const getActivityDetail = async () => {
 		const { data } = await getActivityDetailReq(activityId)
-		console.log(data);
 		activity.id = data.id
 		activity.name = data.name
 		activity.activityId = data.activityId

@@ -10,7 +10,7 @@
 				<el-tag v-else type="danger">不通过</el-tag>
 			</template>
 			<template #type="scope">
-				{{ scope.row.type.join('') }}
+				{{ scope.row.type.join(', ') }}
 			</template>
 			<template #handler="scope">
 				<el-button icon="el-icon-edit" size="mini" type="primary" @click="handleEditClick(scope.row)">

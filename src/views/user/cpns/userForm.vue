@@ -64,7 +64,6 @@ let user = reactive({
 if (userId) {
 	const getuserDetail = async () => {
 		const { data } = await getUserDetailReq(userId)
-		console.log(data);
 		user.id = data.id
 		user.account = data.account
 		user.username = data.username

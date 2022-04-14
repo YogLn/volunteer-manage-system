@@ -55,7 +55,7 @@ let team = reactive({
 	account: '',
 	introduce: '',
 	status: 0,
-	communityCreatedate:'',
+	communityCreatedate: '',
 	logo: '',
 	serveArea: [],
 	serveType: [],
@@ -65,7 +65,6 @@ let team = reactive({
 if (teamId) {
 	const getTeamDetail = async () => {
 		const { data } = await getTeamDetailReq(teamId)
-		console.log(data);
 		team.teamId = data.teamId
 		team.teamName = data.teamName
 		team.communityCreatedate = data.communityCreatedate

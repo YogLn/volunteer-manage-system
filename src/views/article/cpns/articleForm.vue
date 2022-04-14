@@ -40,7 +40,6 @@ let article = reactive({
 if (articleId) {
 	const getArticleDetail = async () => {
 		const { data } = await getArticleDetailReq(articleId)
-		console.log(data);
 		article.id = data.id
 		article.title = data.title
 		article.source = data.source

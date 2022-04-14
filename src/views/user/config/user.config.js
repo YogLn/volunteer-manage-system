@@ -15,7 +15,7 @@ export const tableContentConfig = {
   propList: [
     { prop: 'id', label: 'Id', minWidth: '130' },
     { prop: 'username', label: '用户名', minWidth: '150' },
-    { prop: 'account', label: '账号', minWidth: '80' },
+    { prop: 'account', label: '账号', minWidth: '180' },
     { prop: 'identity', label: '身份证', minWidth: '120' },
     { prop: 'sex', label: '性别', minWidth: '120', slotName: 'sex' },
     { prop: 'roleId', label: '角色', minWidth: '120', slotName: 'role' },
@@ -29,7 +29,7 @@ export const tableContentConfig = {
     {
       prop: 'serveType',
       label: '服务类型',
-      minWidth: '120',
+      minWidth: '180',
       slotName: 'serveType'
     },
     { label: '操作', minWidth: '120', slotName: 'handler' }
