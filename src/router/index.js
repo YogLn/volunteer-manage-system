@@ -75,6 +75,28 @@ const routes = [
           )
       },
       {
+        path: '/activityList',
+        name: 'activityList',
+        meta: {
+          title: '活动管理'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/activity/activityList.vue'
+          )
+      },
+      {
+        path: '/activity/:id',
+        name: 'activitydetail',
+        meta: {
+          title: '修改活动'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/activity/editActivity.vue'
+          )
+      },
+      {
         path: '/comment',
         name: 'comment',
         meta: {
@@ -95,6 +117,28 @@ const routes = [
           import(/* webpackChunkName: "dashboard" */ '../views/team/team.vue')
       },
       {
+        path: '/teamList',
+        name: 'teamList',
+        meta: {
+          title: '团队管理'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/team/teamList.vue'
+          )
+      },
+      {
+        path: '/team/:id',
+        name: 'teamdetail',
+        meta: {
+          title: '修改团队'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/team/editTeam.vue'
+          )
+      },
+      {
         path: '/user',
         name: 'user',
         meta: {
@@ -102,7 +146,29 @@ const routes = [
         },
         component: () =>
           import(/* webpackChunkName: "dashboard" */ '../views/user/user.vue')
-      }
+      },
+      {
+        path: '/userList',
+        name: 'userList',
+        meta: {
+          title: '用户管理'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/user/userList.vue'
+          )
+      },
+      {
+        path: '/user/:id',
+        name: 'userdetail',
+        meta: {
+          title: '修改用户'
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "dashboard" */ '../views/user/editUser.vue'
+          )
+      },
     ]
   }
 ]

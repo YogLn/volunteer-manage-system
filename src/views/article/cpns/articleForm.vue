@@ -22,11 +22,11 @@
 </template>
 
 <script setup>
-import { reactive, ref, defineEmit, defineProps } from 'vue';
+import { reactive, ref, defineEmits, defineProps } from 'vue';
 import { getArticleDetailReq } from '@/services/article';
 
 const { articleId } = defineProps({ articleId: { type: String } });
-const emit = defineEmit(['sendArticle', 'editArticle'])
+const emit = defineEmits(['sendArticle', 'editArticle'])
 
 const FormRef = ref(null)
 let article = reactive({

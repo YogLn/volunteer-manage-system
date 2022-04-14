@@ -2,6 +2,7 @@ import { createStore, useStore as useVuexStore } from 'vuex'
 import login from './login'
 import article from './article'
 import team from './team'
+import user from './user'
 
 const store = createStore({
   state: {
@@ -46,7 +47,8 @@ const store = createStore({
   modules: {
     login,
     article,
-    team
+    team,
+    user
   }
 })
 

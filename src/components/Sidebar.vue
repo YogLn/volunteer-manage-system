@@ -60,8 +60,14 @@ export default {
       },
       {
         icon: "iconfont icon-activity",
-        index: "/activity",
+        index: "3",
         title: "活动管理",
+          subs: [
+          {
+            index: "/activityList",
+            title: "活动列表",
+          },
+        ]
       },
       {
         icon: "iconfont icon-comment",
@@ -70,13 +76,29 @@ export default {
       },
       {
         icon: "iconfont icon-team",
-        index: "/team",
+         index: "6",
         title: " 团队管理",
+        subs: [
+          {
+            index: "/teamList",
+            title: "团队列表",
+          },
+        ]
       },
       {
         icon: "iconfont icon-user",
-        index: "/user",
+        index: "6",
         title: " 用户管理",
+        subs: [
+          {
+            index: "/userList",
+            title: " 用户管理",
+          },
+          {
+            index: '/user',
+            title: '创建管理员'
+          }
+        ]
       },
     ];
 

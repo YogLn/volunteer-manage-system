@@ -3,6 +3,7 @@
 		<div class="top">
 			<el-button type="primary" @click="dialogVisible = true">新增管理员</el-button>
 		</div>
+		
 		<el-dialog v-model="dialogVisible" title="管理员信息" width="30%">
 			<el-form :model="form" label-width="120px" :rules="rules">
 				<el-form-item label="账号" prop="account">
