@@ -2,13 +2,15 @@ import axios from 'axios'
 import { ElLoading } from 'element-plus'
 
 const service = axios.create({
-  baseURL: 'http://volunteer.sherlockouo.top',
-  timeout: 5000,
-  loading: null
+  baseURL: 'http://volunteer.sherlockouo.top', //线上地址
+  // baseURL: 'http://localhost:8088/',
+  timeout: 10000, //请求时间5s，超过5s停止请求
+  loading: null //加载背景
 })
-
+// 请求拦截
 service.interceptors.request.use(
   config => {
+    // 请求的时候添加token
     const token = JSON.parse(window.localStorage.getItem('token'))
     if (token) config.headers.authorization = token.data
     config.loading = ElLoading.service({
@@ -23,7 +25,7 @@ service.interceptors.request.use(
     return Promise.reject()
   }
 )
-
+//响应拦截
 service.interceptors.response.use(
   response => {
     response.config.loading.close()

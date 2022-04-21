@@ -40,13 +40,13 @@
 </template>
 
 <script setup>
-import { reactive, ref, defineEmits, defineProps } from 'vue';
+import { reactive, ref, defineEmit, defineProps } from 'vue';
 import { getTeamDetailReq } from '@/services/team';
 import { provinces } from '@/utils/provinces'
 import { serveType } from '@/utils/serveType'
 
 const { teamId } = defineProps({ teamId: { type: String } });
-const emit = defineEmits(['sendTeam', 'editTeam'])
+const emit = defineEmit(['sendTeam', 'editTeam'])
 
 const FormRef = ref(null)
 let team = reactive({

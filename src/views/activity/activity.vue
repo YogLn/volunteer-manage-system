@@ -26,10 +26,11 @@ import { deleteActivityReq } from '@/services/activity'
 import { tableContentConfig } from './config/activity.config';
 
 const store = useStore();
-
+// 派发action从vuex中发起网络请求，并拿到数据
 store.dispatch('activity/getActivityListAction')
 const activityList = computed(() => store.state.activity.activityList)
 
+// 处理删除逻辑
 const handleDeleteClick = async ({ activityId }) => {
 	const { code } = await deleteActivityReq(activityId)
 	if (code === 200) {

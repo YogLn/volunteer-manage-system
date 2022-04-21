@@ -55,13 +55,13 @@
 </template>
 
 <script setup>
-import { reactive, ref, defineEmits, defineProps } from 'vue';
+import { reactive, ref, defineEmit, defineProps } from 'vue';
 import { getActivityDetailReq } from '@/services/activity';
 import { provinces } from '@/utils/provinces'
 import { serveType } from '@/utils/serveType'
 
 const { activityId } = defineProps({ activityId: { type: String } });
-const emit = defineEmits(['sendActivity', 'editActivity'])
+const emit = defineEmit(['sendActivity', 'editActivity'])
 
 const FormRef = ref(null)
 let activity = reactive({

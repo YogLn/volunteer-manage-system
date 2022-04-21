@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<ArticleForm @sendArticle="handlePublish" ref="FormRef" />
+		<ArticleForm @handlePublish="handlePublish" ref="FormRef" />
 	</div>
 </template>
 

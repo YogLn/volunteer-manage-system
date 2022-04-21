@@ -22,11 +22,11 @@
 </template>
 
 <script setup>
-import { reactive, ref, defineEmits, defineProps } from 'vue';
+import { reactive, ref, defineEmit, defineProps } from 'vue';
 import { getArticleDetailReq } from '@/services/article';
 
 const { articleId } = defineProps({ articleId: { type: String } });
-const emit = defineEmits(['sendArticle', 'editArticle'])
+const emit = defineEmit(['sendArticle', 'editArticle'])
 
 const FormRef = ref(null)
 let article = reactive({
@@ -54,7 +54,7 @@ const handlePublish = async () => {
 		emit('editArticle', article)
 	} else {
 		// 新增
-		emit('sendArticle', article)
+		emit('handlePublish', article)
 		FormRef.value.resetFields()
 	}
 

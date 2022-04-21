@@ -40,13 +40,13 @@
 </template>
 
 <script setup>
-import { reactive, ref, defineEmits, defineProps } from 'vue';
+import { reactive, ref, defineEmit, defineProps } from 'vue';
 import { getUserDetailReq } from '@/services/user';
 import { provinces } from '@/utils/provinces'
 import { serveType } from '@/utils/serveType'
 
 const { userId } = defineProps({ userId: { type: String } });
-const emit = defineEmits(['senduser', 'edituser'])
+const emit = defineEmit(['senduser', 'edituser'])
 
 const FormRef = ref(null)
 let user = reactive({
